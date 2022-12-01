@@ -46,27 +46,3 @@ function Filter() {
       .get('.custom-control-label').contains('ตราม้า').click()
       .get('.product-result').contains('ตราม้า').should('be.visible')
 }
-
-function VerifyMenu() {
-    cy.contains('GIFT CARD').should('be.visible');
-    cy.get('[data-icon="menu-fold"]').click();
-    cy.get('[data-icon="menu-unfold"]').click();
-    cy.contains('Order').should('be.visible');
-    cy.get('.ant-menu-item:nth-child(1)').click();
-    cy.contains('Corporate').should('be.visible');
-    cy.get('.ant-menu-item:nth-child(2)').click();
-    cy.contains('Gift Card').should('be.visible');
-    cy.get('.ant-menu-item:nth-child(3)').click();
-    cy.contains('Stock').should('be.visible');
-    cy.get('.ant-menu-item:nth-child(4)').click();
-    cy.contains('Promotion').should('be.visible');
-    cy.get('.ant-menu-item:nth-child(5)').click();
-    cy.contains('Report').should('be.visible');
-    cy.get('.ant-menu-submenu-inline').click();
-    cy.get('[data-icon="ellipsis"]').trigger('mouseover');
-    cy.wait(500)
-    cy.get('.ant-menu-submenu-vertical .ant-menu-title-content').click();
-    cy.contains('ข้อมูลส่วนตัว').should('be.visible');
-    cy.contains('เปลี่ยนรหัสผ่าน').should('be.visible');
-    cy.contains('ออกจากระบบ').should('be.visible');
-}
