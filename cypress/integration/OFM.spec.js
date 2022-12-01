@@ -24,15 +24,11 @@ describe('test search on OFM ', () => {
         Filter()
         cy.get('.panel:nth-child(2) .text-link').click();
               });
-    
-    it('TC-TEST-004 search result', () => {
-        Search()
-        cy.reload()
-          .get('.radio-hidden:nth-child(2) .btn').click()
-          .scrollTo(1075.280,24)
-          .get('.fs-12 my-auto mr-3').contains('1-45').should('be.visible')
-          .get('.radio-hidden:nth-child(3) .btn').click()
+
+    it.only('TC-TEST-004 search invalid item', () => {
+        SearchInvalid()
               });
+
 })
 
 function Search() {
@@ -45,4 +41,14 @@ function Filter() {
     cy.get('.custom-control-label').contains('อุปกรณ์สำนักงาน').click()
       .get('.custom-control-label').contains('ตราม้า').click()
       .get('.product-result').contains('ตราม้า').should('be.visible')
+}
+
+function SearchInvalid() {
+    cy.get('[aria-label="x"]').click()
+      .get('.form-navbar-search').click()
+      .get('.form-navbar-search').type('${enter}')
+      .get('.fs-18').contains('ขออภัย! ไม่พบสินค้าที่ตรงกับ').should('be.visible')
+      .get('.text-approve').contains('$').should('be.visible')
+      .get('.fs-14').contains('โปรดตรวจสอบตัวสะกดว่าถูกต้องหรือไม่ หรือค้นหาโดยใช้คำที่ใกล้เคียง').should('be.visible')
+      .get('.fs-14').contains('กรุณาลองค้นหาใหม่อีกครั้ง').should('be.visible')
 }
