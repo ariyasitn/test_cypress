@@ -1,0 +1,8 @@
+{ "chromeWebSecurity": false,
+  "reporter": "junit",
+  "numTestsKeptInMemory": 10,
+  "reporterOptions": {
+    "mochaFile": "reports/result-[hash].xml",
+    "testCaseSwitchClassnameAndName": true
+  }
+}

@@ -1,0 +1,11 @@
+version: "3"
+services:
+
+  test:
+    build: .
+    network_mode: host
+    volumes:
+      # - .:/opt/cypress/temp
+      - ./reports:/opt/cypress/temp/reports
+    working_dir: /opt/cypress/temp
+    command: npm run cypress-run-${COUNTRY}-${ENV}
